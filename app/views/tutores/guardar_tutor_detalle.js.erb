@@ -1,0 +1,16 @@
+  <% if @guardado_ok %>
+
+ setTimeout(function(){ 
+  $("#<%= params[:window_id]%>").modal('hide');
+  $("#link-to-tutor-detalle-<%= params[:tutor_id]%>").trigger('click');
+  $("#link-to-tutor-detalle-<%=params[:tutor_id]%>").trigger('click');
+  swal("El alumno se asignado al tutor con éxito");  
+  }, 1000);
+  
+ 
+
+<% else %>
+
+  swal('Error al guardar los detalles del tutor. <%=@msg%>');
+
+<% end %>

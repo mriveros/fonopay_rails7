@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+      background-color: #04AA6D;
+      color: white;
+    }
+    </style>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  
+   <% @cita_detalle = VRegistroCobro.where('paciente_id = ? and estado_cobro_id = ?', @objeto_id, PARAMETRO[:estado_cobro_pendiente]) %></p>
+  
+  </head>
+  <body>
+  <h3>FonoPago Informa.</h3>
+    <p>
+      <p><bold> <%= @texto_principal%> </bold> </p>
+    
+     <br />
+      <table class="table table-bordered table-hover table-striped display dataTable" aria-describedby="example_info">
+            
+        <thead>
+              
+          <tr role="row">
+
+              <th>Paciente</th>
+              <th>Fecha</th>
+              <th>Monto Cuota</th>
+              <th>Estado</th>
+              
+            </tr>
+            <%if @cita_detalle.present?%>
+              
+              <% @cita_detalle.each do |cit|%>
+              
+                <tr>
+                  <td><%=cit.paciente_nombre%> <%=cit.paciente_apellido %></td>
+                  <td><%=cit.fecha_cita.strftime('%d/%m/%Y')%></td>
+                  <td><%=cit.precio.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse%></td>
+                  <td><%=cit.estado_cobro%></td>
+                </tr>
+                
+              <%end%> 
+            
+            <%end%>  
+
+     <br />
+    </p>
+  
+    <p>
+      Ante cualquier duda contactá con nuestro servicio de Atención al Cliente
+      en el Teléfono: 0981234234 o a la dirección de email: FonoPago@gmail.com<br /> 
+    </p>
+    
+  </body>
+
+</html>

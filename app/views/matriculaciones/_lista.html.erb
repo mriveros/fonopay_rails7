@@ -1,0 +1,49 @@
+<% if matriculaciones.present? %>
+
+  <% matriculaciones.each do |m| %>
+
+    <tr>
+
+      <td ><%= m.matriculacion_id %></td>
+      <td ><%= m.sucursal %></td>
+      <td ><%= m.periodo_escolar %></td>
+      <td ><%= m.nivel %></td>
+      <td ><%= m.sala%></td>
+      <td ><%= m.estado_matriculacion%></td>
+      <td >
+        
+        <%= link_to_editar_matriculacion(m) %>
+        <%= link_to_matriculacion_detalle(m.matriculacion_id) %>
+        <%= link_to icon_eliminar, matriculaciones_eliminar_path(id: m.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar  la matriculación', data: { confirm: "Está seguro de eliminar la Mtriculación?"} %>
+         
+       </td>
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+<tr id="tab-paginacion">
+
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate matriculaciones, :params => params %></div></td>
+</tr>
+
+<tr>
+    <td colspan="12">
+      Cantidad de registros encontrados: <%= @total_encontrados %> 
+    </td>
+</tr>
+
+ 
+
+<% else %>
+
+  <tr>
+
+    <td colspan="12"><p class='none-result'>No se han encontrado resultados.</p></td>
+
+  </tr>
+
+
+<% end %>

@@ -1,0 +1,126 @@
+development:
+
+  #ROLES 
+  rol_administrador: 1
+  rol_tutor: 3
+  rol_super: 6
+
+  #ESTADOS CITAS
+  estado_cita_pendiente: 1
+  estado_cita_postergado: 2
+  estado_cita_finalizado: 3
+  estado_cita_ausente: 4
+
+  #sistemas
+  sistema_RUE: 1
+  
+  #TIPOS ELEMENTOS INTERFAZ
+  radio_button: 1
+  check_box: 2
+  text: 3
+  combo_box: 4
+  
+  #TIPOS DATO
+  tipo_dato_numerico: 1
+  tipo_dato_texto: 2
+ 
+  #TIPOS DOCUMENTOS
+  certificado_nacimiento: 6
+  sin_documento: 5
+  cedula_identidad: 1
+
+  #TIPOS RESOLUCIONES
+  archivo_fonoaudiologico: 1
+  archivo_clinica_general: 2
+
+  #ESTADOS COBROS
+  estado_cobro_pendiente: 1
+  estado_cobro_cobrado: 2
+  estado_cobro_no_cobrado: 3
+
+  #ESTADOS MATRICULACIONES
+  estado_matriculacion_activo: 1
+  estado_matriculacion_inactivo: 2
+
+  #ESTADOS MATRICULACIONES DETALLES
+  estado_matriculacion_detalle_activo: 1
+  estado_matriculacion_detalle_inactivo: 2
+
+  #ESTADOS CUOTAS DETALLES
+  estado_pago_cuota_detalle_pendiente: 1
+  estado_pago_cuota_detalle_pagado: 2
+  estado_pago_cuota_detalle_pago_parcial: 3
+
+  #REGISTRO DE GASTOS
+  registro_gasto_pago_salario: 1
+
+  #ESTADOS PERSONALES
+  estado_personal_activo: 1
+
+  #ESPECIALIDADES
+  especialidad_fonoaudiologia: 1
+
+production:
+  
+
+  #ROLES 
+  rol_administrador: 1
+  rol_tutor: 3
+  rol_super: 6
+
+  #ESTADOS CITAS
+  estado_cita_pendiente: 1
+  estado_cita_postergado: 2
+  estado_cita_finalizado: 3
+  estado_cita_ausente: 4
+  
+
+   
+  #sistemas
+  sistema_RUE: 1
+  
+  #TIPOS ELEMENTOS INTERFAZ
+  radio_button: 1
+  check_box: 2
+  text: 3
+  combo_box: 4
+  
+  #TIPOS DATO
+  tipo_dato_numerico: 1
+  tipo_dato_texto: 2
+ 
+  #TIPOS DOCUMENTOS
+  certificado_nacimiento: 6
+  sin_documento: 5
+  cedula_identidad: 1
+
+  #TIPOS RESOLUCIONES
+  archivo_fonoaudiologico: 1
+  archivo_clinica_general: 2
+
+  #ESTADOS COBROS
+  estado_cobro_pendiente: 1
+  estado_cobro_cobrado: 2
+  estado_cobro_no_cobrado: 3
+  
+  #ESTADOS MATRICULACIONES
+  estado_matriculacion_activo: 1
+  estado_matriculacion_inactivo: 2
+
+  #ESTADOS MATRICULACIONES DETALLES
+  estado_matriculacion_detalle_activo: 1
+  estado_matriculacion_detalle_inactivo: 2
+  
+  #ESTADOS CUOTAS DETALLES
+  estado_pago_cuota_detalle_pendiente: 1
+  estado_pago_cuota_detalle_pagado: 2
+  estado_pago_cuota_detalle_pago_parcial: 3
+  
+  #REGISTRO DE GASTOS
+  registro_gasto_pago_salario: 1
+
+  #ESTADOS PERSONALES
+  estado_personal_activo: 1
+
+  #ESPECIALIDADES
+  especialidad_fonoaudiologia: 1

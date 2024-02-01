@@ -1,0 +1,156 @@
+<%= javascript_include_tag "sweetalert.min" %>
+<%= stylesheet_link_tag "sweetalert" %>
+<div>
+
+  <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
+    <h3 style="float:left;margin-top:5px;">Pagos de Consultas</h3>
+  </div>
+</div>
+
+<div style="clear:both;"></div>
+ 
+<div class="table-responsive" id="table-pagos-cuotas-detalles">
+
+  <table class="table table-small-font table-bordered table-striped" style="font-size:11px;">
+   
+    <thead>
+
+      <%= form_tag cuotas_lista_cuotas_detalles_path, remote: true, id: "form-buscar-pagos-cuotas-detalles"  do  %>
+
+        <tr>
+
+          <th>
+            <span>ID</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_cuotas_detalles_id, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+          
+          <th>
+            <div><%= label_tag nil, "Fecha Cita".html_safe %></div>
+              <div class='input-group date'>
+                <%= text_field_tag :form_buscar_cuotas_detalles_fecha, nil, class: 'form-control input-sm' %>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_fecha');"><i class="fa fa-times"></i></span>
+              </div>
+         </th>
+
+         <th>
+            <span>CI Paciente</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_cuotas_detalles_ci_alumno, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_ci_alumno');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+         
+        <th>
+            <span>Paciente<br/> <em style="font-size: 7px;"> Ej: Juan Gonzalez</em></span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_cuotas_detalles_nombre_alumno, nil, :class => 'form-control', :placeholder => "" %>
+            <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles','#form_buscar_cuotas_detalles_nombre_alumno');"><i class="fa fa-times"></i></span>
+            </div>
+            <em class="nmb"></em>
+        </th>
+
+        <th>
+            <span>Mes</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_cuotas_detalles, :mes_periodo_id, Mes.orden_mes, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_mes_periodo_id');"><i class="fa fa-times"></i></span>
+            </div>
+        </th>
+
+        <th>
+            <span>Año</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_cuotas_detalles, :periodo_escolar_id, PeriodoEscolar.orden_periodo, :id, :anho_periodo, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_periodo_escolar_id');"><i class="fa fa-times"></i></span>
+            </div>
+        </th>
+
+        
+        <th>
+            <span>Profesional</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_cuotas_detalles, :sucursal_id, VProfesional.nombre_persona.orden_01, :profesional_id, :nombre_apellido, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_sucursal_id');"><i class="fa fa-times"></i></span>
+            </div>
+        </th>
+
+        <th>
+            <span>Monto</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_cuotas_detalles_monto_cuota, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_monto_cuota');"><i class="fa fa-times"></i></span>
+            </div>
+        </th> 
+
+        <th>
+          <span>Estado Cobro</span>
+          <div class="input-group input-group-sm">
+            <%= collection_select :form_buscar_cuotas_detalles, :estado_pago_cuota_detalle_id, EstadoPagoCuotaDetalle.orden_01, :id, :descripcion, { include_blank: false, default: 1}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+            <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pagos-cuotas-detalles', '#form_buscar_cuotas_detalles_estado_pago_cuota_detalle_id');"><i class="fa fa-times"></i></span>
+          </div>
+        </th>      
+
+        <th></th>
+
+        </tr>
+
+        <% end %>
+
+      </thead> 
+
+    <tbody id="pagos-cuotas-detalles-lista"></tbody>
+  
+  </table>
+
+</div>
+
+<script type="text/javascript">
+
+  //---------------------------- RECUPERANDO DATOS ----------------------------//
+  $("#form-buscar-pagos-cuotas-detalles").bind("submit", function () {
+    
+    var valido = true;
+      
+    if(valido){
+      $(".nmb").html('');       
+      $("#pagos-cuotas-detalles-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")      
+    }
+  })
+ 
+  //---------------------------------------------------------------------------//
+  //---------------------------- BUSCAR PERSONAS-------- -------------------------//
+  $("#table-pagos-cuotas-detalles input, #table-pagos-cuotas-detalles select").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-pagos-cuotas-detalles").submit();
+
+  })
+  //----------------------------------------------------------------------------//
+  //----------------------------INICIO -----------------------------------------//
+  aplicar_datepicker();
+  $("#form-buscar-pagos-cuotas-detalles").submit();
+  <% if params[:agregar] %>
+    $("#link-to-agregar-pagos-cuotas").trigger('click');
+  <% end %>
+  //----------------------------------------------------------------------------//
+</script>
+
+<style>
+    /*INTRO.JS*/
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+
+    #start-tour{
+        cursor: pointer;
+    }
+
+    #form-buscar-pagos-cuotas-detalles table th { background:#e6e6e6;}
+    #form-buscar-pagos-cuotas-detalles table th span.limpiar { background:#fff;}
+
+</style>

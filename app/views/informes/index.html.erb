@@ -1,0 +1,151 @@
+
+<%= javascript_include_tag "sweetalert.min" %>
+<%= stylesheet_link_tag "sweetalert" %>
+
+<div>
+
+  <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
+    <h3 style="float:left;margin-top:5px;">Generar Reportes</h3>
+  </div>
+
+</div>
+
+
+  
+ 
+
+<%= form_for "informes", remote: true, url: informes_indexa_url, html: { id: "form-informes-produccion" }, method: 'GET' do |f| %>
+
+  <div class="modal-body">    
+
+    <div class="col-sm-6 col-sm-offset-3">
+
+      <div class="panel-body" style="background:#e6e6e6; ">
+        
+        <div class="col-sm-4"><%= label_tag nil, "Paciente".html_safe %></div>
+        <%= hidden_field_tag :v_paciente_id %>
+        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= text_area_tag :paciente_id, nil, rows: 3 ,class: 'form-control input-sm'%></div>
+        <br style="clear: both;"/>
+
+        <div class="col-sm-1"></div><br />
+        <div class="col-sm-4"><%= label_tag :nil, "Profesional".html_safe %></div>
+        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :profesional, :id, VProfesional.nombre_persona, :profesional_id, :nombre_apellido, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
+        <div class="col-sm-1"></div><br />
+
+        <div class="col-sm-1"></div><br />
+        <div class="col-sm-4"><%= label_tag :nil, "Estado Cobro".html_safe %></div>
+        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :estado_cobro, :id, EstadoCobro.orden_01, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
+        <div class="col-sm-1"></div><br />
+
+
+        <div class="col-sm-4"><%= label_tag :nil, "Desde la Fecha".html_safe %></div>
+        <div class='input-group date col-sm-7'><%= text_field_tag :fecha_desde, nil, class: 'form-control input-sm' %>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+
+
+        <div class="col-sm-1"></div><br />
+        <div class="col-sm-4"><%= label_tag :nil, "Hasta la Fecha".html_safe %></div>
+        <div class='input-group date col-sm-7'><%= text_field_tag :fecha_hasta, nil, class: 'form-control input-sm' %>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+        <div class="col-sm-1"></div><br /> 
+       
+
+      </div>
+
+      
+      <div class="modal-footer" style="background:#e6e6e6; text-align: center">
+
+        <%= submit_tag  "Generar Reporte", class: "btn btn-primary", id: "btn-generar-reporte" %>
+          
+      </div>
+
+    </div>  
+
+  </div>  
+<%end%>
+
+<script type="text/javascript">
+
+  $("#btn-generar-reporte").bind('click', function(){
+    
+   // $("#btn-generar-reporte").attr('disabled', true);
+
+  })
+
+  //OBTENER ALUMNO
+  $("#paciente_id").bind('focus', function(){   
+
+    var alumnos = [];
+    $("#v_paciente_id").val('');
+    $("#paciente_id").val('');
+    $("#paciente_id").attr('readonly', false);
+
+    $.getJSON("<%= url_for(pacientes_buscar_paciente_path) %>", { alumno: $("#paciente_id").val()}, function(j){
+        
+      var nombre = "";
+      var options = "<option value=''> -- Seleccione un Profesional -- </option>"
+
+      for (var i = 0; i < j.length; i++) {
+        
+        if(j[i].nombre != nombre ){
+          
+          alumnos.push( {value: j[i].id +" - "+ j[i].nombres+" "+j[i].apellidos });
+          nombre =j[i].id +" - "+ j[i].nombre+" "+j[i].apellidos ;
+
+          options += "<option value="+ j[i].id +" - "+ j[i].nombre+" "+j[i].apellidos + "</option>"
+
+        }
+
+      }
+
+      $("#paciente_id").html(options);
+
+    })
+
+    $("#paciente_id").autocomplete({
+
+      minLength: 1,
+      source: alumnos,
+
+      focus: function( event, ui ) {
+      
+        $("#paciente_id" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+
+        var datos = ui.item.value.split(" - ");
+        $("#paciente_id").val( ui.item.label );
+        $("#v_paciente_id").val(datos[0]);
+        return false;
+
+      }
+    })
+
+  });
+  
+  //----------------------------INICIO -----------------------------------------//
+  aplicar_datepicker();
+ 
+</script>
+
+<style>
+    /*INTRO.JS*/
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+
+    #start-tour{
+        cursor: pointer;
+    }
+    #form-buscar-informes table th { background:#e6e6e6;}
+    #form-buscar-informes table th span.limpiar { background:#fff;}
+    #form-buscar-informes label, #form-buscar-informes input[type='text'] { float:left; margin-top:5px;}
+    #form-buscar-informes br {clear:both; }
+    #form-buscar-informes label { width:200px;}
+
+</style>

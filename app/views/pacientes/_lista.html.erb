@@ -1,0 +1,53 @@
+<% if @pacientes.present? %>
+
+  <% @pacientes.each do |p| %>
+
+    <tr>
+
+      <td style="width:50px;"><%= p.paciente_id %></td>
+      <td><%= p.nombres%></td>
+      <td><%= p.apellidos%></td>
+      <td><%= p.ci %></td>
+      <td><%= p.fecha_nacimiento.strftime("%d/%m/%Y") if p.fecha_nacimiento.present?%></td>
+      <td><%= p.direccion%></td>
+      <td><%= p.telefono_contacto%></td>
+      <td><%= p.email_contacto%></td>
+      <td><%= paciente_avatar(p, class: 'media-object img-circle', style: 'width:50px;height:50px;', value: 'M' ) %></td>
+      
+      <td style="width:120px;">
+        
+        <%= link_to_editar_paciente(p.paciente_id) %>
+        
+        <%= link_to icon_eliminar, pacientes_eliminar_path(paciente_id: p.paciente_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el paciente', data: { confirm: "Está seguro de eliminar el paciente?"} %>
+      
+       </td> 
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+<tr id="tab-paginacion">
+
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate paciente, :params => params %></div></td>
+</tr>
+
+<tr>
+    <td colspan="12">
+      Cantidad de registros encontrados: <%= @total_encontrados %> 
+    </td>
+</tr>
+
+ 
+
+<% else %>
+
+  <tr>
+
+    <td colspan="12"><p class='none-result'>No se han encontrado resultados.</p></td>
+
+  </tr>
+
+
+<% end %>

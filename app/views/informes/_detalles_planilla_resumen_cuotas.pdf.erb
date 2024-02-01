@@ -1,0 +1,32 @@
+
+<table align="center" class="cual" style="width: 80%; border: 1px solid #000 !important;">
+ 
+  <tr>
+
+   		<th>ID Detalle</th>
+      <th>Mes</th>
+      <th>Fecha Cita</th>
+      <th>Paciente</th>
+      <th>Monto</th>
+      <th>Estado Cobro</th>
+
+  </tr>
+
+  <% @registros_cobros.each do |registro_cobro|%>
+  
+  	<tr align="center">
+
+ 		 	<td><%= registro_cobro.cita_id%></td>
+      <td><%= registro_cobro.mes_letra%></td>
+      <td><%= registro_cobro.fecha_cita.strftime('%d/%m/%Y') if registro_cobro.fecha_cita.present?%></td>
+      <td><%= registro_cobro.paciente_nombre%> <%= registro_cobro.paciente_apellido%></td>
+      <td><%= registro_cobro.precio.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse%></td>
+      <td><%= registro_cobro.estado_cobro%></td>
+
+		</tr>
+  		
+<%end%>
+</table>
+<br/>
+<br/>
+<br/>

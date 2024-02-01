@@ -1,0 +1,139 @@
+<%= javascript_include_tag "sweetalert.min" %>
+<%= stylesheet_link_tag "sweetalert" %>
+<div>
+<!--
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+-->
+  <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
+    <h3 style="float:left;margin-top:5px;">Matriculaciones</h3>
+    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-matriculacion", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+    <%= modal_window( window_id: "modal-window-agregar-matriculacion", link_to_id: "#link-to-agregar-matriculacion", url: matriculaciones_agregar_path( window_id: "modal-window-agregar-matriculacion") )%>
+    
+  </div>
+</div>
+
+<div style="clear:both;"></div>
+ 
+<div class="table-responsive" id="table-matriculaciones">
+
+  <table class="table table-small-font table-bordered table-striped" style="font-size:11px;">
+   
+    <thead>
+
+      <%= form_tag matriculaciones_lista_path, remote: true, id: "form-buscar-matriculaciones"  do  %>
+
+        <tr>
+
+          <th style="width:20px;">
+            <span>ID</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_matriculaciones_id, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones', '#form_buscar_matriculaciones_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+          <th >
+          <span>Sucursal</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_matriculaciones, :sucursal_id, Sucursal.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones', '#form_buscar_matriculaciones_sucursal_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th >
+          <span>Periodo Escolar</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_matriculaciones, :periodo_id, PeriodoEscolar.orden_periodo, :id, :anho_periodo, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones', '#form_buscar_matriculaciones_periodo_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th >
+          <span>Nivel</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_matriculaciones, :nivel_id, Nivel.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones', '#form_buscar_matriculaciones_nivel_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th >
+          <span>Sala</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_matriculaciones, :sala_id, Sala.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones', '#form_buscar_matriculaciones_sala_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th >
+          <span>Estado Matriculación</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_matriculaciones, :estado_matriculacion_id, EstadoMatriculacion.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones', '#form_buscar_matriculaciones_estado_matriculacion_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+
+          <th style="width:150px;"></th>
+
+        </tr>
+
+        <% end %>
+
+      </thead> 
+
+    <tbody id="matriculaciones-lista"></tbody>
+  
+  </table>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+  //---------------------------- RECUPERANDO DATOS ----------------------------//
+  $("#form-buscar-matriculaciones").bind("submit", function () {
+    var valido = true;
+      
+    if(valido){
+    $(".nmb").html('');       
+    $("#matriculaciones-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")      
+    }
+
+    
+
+  })
+ 
+  //---------------------------------------------------------------------------//
+  //---------------------------- BUSCAR PERSONAS-------- -------------------------//
+  $("#table-matriculaciones input, #table-matriculaciones select").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-matriculaciones").submit();
+
+  })
+  //----------------------------------------------------------------------------//
+  //----------------------------INICIO -----------------------------------------//
+  aplicar_datepicker();
+  $("#form-buscar-matriculaciones").submit();
+  <% if params[:agregar] %>
+    //$("#link-to-agregar-matriculacion").trigger('click');
+  <% end %>
+  //----------------------------------------------------------------------------//
+</script>
+
+<style>
+    /*INTRO.JS*/
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+
+    #start-tour{
+        cursor: pointer;
+    }
+
+    #form-buscar-matriculaciones table th { background:#e6e6e6;}
+    #form-buscar-matriculaciones table th span.limpiar { background:#fff;}
+
+</style>
