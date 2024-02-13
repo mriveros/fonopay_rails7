@@ -1,6 +1,4 @@
 class Acceso < ActiveRecord::Base
-  
-  #attr_accessible :rol_id, :accion_id
 
   scope :orden_id, -> {order("id")}
 

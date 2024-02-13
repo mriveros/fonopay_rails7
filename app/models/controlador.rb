@@ -1,6 +1,4 @@
 class Controlador < ActiveRecord::Base
-  
-  #attr_accessible :descripcion
 
   scope :ordenado_id, -> {order("id")}
   scope :ordenado_descripcion, -> {order("descripcion")}
