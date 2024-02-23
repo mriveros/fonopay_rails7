@@ -151,9 +151,7 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   get 'registros_gastos/editar'
   post 'registros_gastos/actualizar'
   get 'registros_gastos/index'
-#---------------------------------------FONOWARE------------------------------------------------------------------------    
-  #CRONTAB
-  get "crontab_ultron/index"
+#---------------------------------------OTROS MODULOS------------------------------------------------------------------------    
 
   #JURISDICCIONES
   get "jurisdicciones/index"
@@ -271,7 +269,7 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   get "citas_detalles_fono/deshabilitar_descarga_archivo"
   get "citas_detalles_fono/cita_detalle_fono_terminado"
 
-#--------------------------------------------SISTEMA------------------------------------------------------------  
+#--------------------------------------------SNCP CORE------------------------------------------------------------  
   #PERSONAS
   post "personas/lista"
   get "personas/lista"

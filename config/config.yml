@@ -1,7 +1,7 @@
 defaults: &defaults
   perform_authentication: true
-  username: "mecpy"
-  password: "mecpy2015"
+  username: "sncp"
+  password: "sncp2024"
 
 development:
   <<: *defaults

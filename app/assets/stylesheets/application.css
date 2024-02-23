@@ -14,8 +14,8 @@
  *= stub slider
  *= require pagination
  *= require introjs.min
- *= require rails7
- *= require rails7_plugins
+ *= require sncp
+ *= require sncp_plugins
  *= require jquery.ui.autocomplete
  *= require style
  *= require datepicker
