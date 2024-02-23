@@ -64,19 +64,6 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   get "matriculaciones/eliminar_matriculacion_detalle"
  
 
-#PACIENTES
-  post "pacientes/lista"
-  get "pacientes/lista"
-  get "pacientes/agregar"
-  post "pacientes/guardar"
-  get "pacientes/eliminar"
-  get "pacientes/editar"
-  post "pacientes/actualizar"
-  get "pacientes/index"
-  get "pacientes/buscar_paciente"
-  get "pacientes/buscar_persona" 
-  get "pacientes/buscar_paciente_documento"
-
 #TUTORES
   post "tutores/lista"
   get "tutores/lista"
@@ -237,38 +224,7 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   get "precios/buscar_precio"
   get "precios/marcar_predeterminado"
 
-  #CITAS
-  get "citas/index"
-  post "citas/lista"
-  get "citas/lista"
-  get "citas/agregar"
-  post "citas/guardar"
-  get "citas/editar"
-  post "citas/actualizar"
-  get "citas/eliminar"
-  get "citas/cambiar_estado_cita_en_espera_a_en_consultorio"
-  get "citas/cambiar_estado_cita_en_consultorio_a_terminado"
-  get "citas/cambiar_estado_cobro_a_cobrado"
-  get "citas/cambiar_estado_cobro_a_no_cobrado"
-  get "citas/cambiar_estado_cita_terminado_a_en_consultorio"
-  get "citas/postergar_cita"
-  post "citas/guardar_postergar_cita"
-  get "citas/imprimir_informe"
-  get "citas/generar_informe_pdf"
-  get "citas/cambiar_estado_cita_en_consultorio_a_en_espera"
   
-
-  #CITAS DETALLES FONO
-  get "citas_detalles_fono/cita_detalle_fono"
-  post "citas_detalles_fono/guardar_cita_detalle_fono"
-  get "citas_detalles_fono/emitir_resolucion"
-  post "citas_detalles_fono/guardar_resolucion"
-  get "citas_detalles_fono/adjuntar_resolucion"
-  post "citas_detalles_fono/guardar_resolucion_adjunta"
-  get "citas_detalles_fono/habilitar_descarga_archivo"
-  get "citas_detalles_fono/deshabilitar_descarga_archivo"
-  get "citas_detalles_fono/cita_detalle_fono_terminado"
-
 #--------------------------------------------SNCP CORE------------------------------------------------------------  
   #PERSONAS
   post "personas/lista"

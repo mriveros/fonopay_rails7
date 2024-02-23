@@ -59,7 +59,6 @@
 				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">FonoPago<b class="caret"></b></a>
 				            <ul class="dropdown-menu">
 				                <!-- Opciones de FonoPago -->
-				                <li><%= link_to "Pacientes", pacientes_index_path if acceso_permitido("pacientes.index") %></li>
 				                <li><%= link_to "Personas", personas_index_path if acceso_permitido("personas.index") %></li>
 				                <li><%= link_to "Personales", personales_index_path if acceso_permitido("personales.index") %></li>
 				                <li><%= link_to "Puestos de Trabajo/Cargos", cargos_index_path if acceso_permitido("cargos.index") %></li>
@@ -68,7 +67,6 @@
 				            </ul>
 				        </li>
 				        <!-- Otras opciones -->
-				        <li><%= link_to "Citas", citas_index_path if acceso_permitido("citas.index") %></li>
 				        <li><%= link_to "Registrar Cobros", registros_cobros_index_path if acceso_permitido("registros_cobros.index") %></li>
 				    </ul>
 				</li>
