@@ -1,12 +1,21 @@
 <header class="container-fluid">
 
-  <div class="cabecera row hidden-xs">
+<div class="cabecera row hidden-xs">
 
-    <div  style="text-align:center;" > <!--algun logo central aqui 'logo rue'-->
-      <%= image_tag("FonoPago_index.jpg", style: "width:150px;")%> <!--algun logo central aqui-->
+    <div class="col-sm-3 col-xs-8 principal" onclick="Javascript:window.open('http://mec.gov.py', '_self');" style="padding: 5px; margin-top: -6px;">
+      <%= image_tag "logo_principal/actual_mec.png" %>
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-4 logo rue" style="text-align:center;margin-top: 15px;">
+      <%= image_tag("logo_principal/logo_mec.png", style: "width:300px;")%>
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-3">
+      <%= image_tag "logo_principal/actual_gobierno.png" %>
     </div>
 
   </div>
+
 
   <%= render :partial => "layouts/menu" %>
 
