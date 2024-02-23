@@ -1,7 +1,5 @@
 class Pais < ActiveRecord::Base
 
-  #attr_accessible :descripcion, :codigo
-
   scope :orden_descripcion, -> { order('descripcion')}
 
   belongs_to :departamento

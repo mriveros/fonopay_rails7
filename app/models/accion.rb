@@ -1,6 +1,4 @@
 class Accion < ActiveRecord::Base
-  
-  #attr_accessible :controlador_id, :descripcion
 
   scope :orden_id, -> {order("id")}
 

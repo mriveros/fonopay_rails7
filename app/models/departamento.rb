@@ -1,7 +1,5 @@
 class Departamento < ActiveRecord::Base
 
-  #attr_accessible :descripcion, :codigo, :pais_id, :estado
-
   scope :orden_descripcion, -> { order('descripcion')}
   scope :paraguay, -> { where("pais_id = ? and estado = true", 1)}
 

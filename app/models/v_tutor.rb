@@ -8,8 +8,6 @@ class VTutor < ActiveRecord::Base
 
   dragonfly_accessor :photo
 
-  #attr_accessible :id, :nombres, :apellidos, :ci, :direccion, :telefono, :fecha_nacimiento
-  
   scope :orden_01, -> { order("tutor_id")}
   scope :orden_nombres, -> { order("nombres, apellidos")}
   def full_name

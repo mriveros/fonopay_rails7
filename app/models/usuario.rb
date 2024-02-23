@@ -1,8 +1,5 @@
 class Usuario < ActiveRecord::Base
 
-
-  ##attr_accessible :persona_id, :login, :email, :password, :password_confirmation, :active, :token, :perfil_actual_id, :id
-
   scope :ordenado_id, -> {order("id")}
 
   acts_as_authentic do |c|

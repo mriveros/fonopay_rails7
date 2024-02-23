@@ -4,10 +4,6 @@ class PrincipalController < ApplicationController
 
   def index
 
-    mes_actual = Time.now.month
-    anho_actual = Time.now.year
-
-    @citas_dia = Cita.where("fecha_cita = ?", Date.today)
     
   end
 

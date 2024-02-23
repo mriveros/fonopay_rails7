@@ -60,7 +60,6 @@
 				            <ul class="dropdown-menu">
 				                <!-- Opciones de FonoPago -->
 				                <li><%= link_to "Personas", personas_index_path if acceso_permitido("personas.index") %></li>
-				                <li><%= link_to "Personales", personales_index_path if acceso_permitido("personales.index") %></li>
 				                <li><%= link_to "Puestos de Trabajo/Cargos", cargos_index_path if acceso_permitido("cargos.index") %></li>
 				                <li><%= link_to "Precios", precios_index_path if acceso_permitido("precios.index") %></li>
 				                <li><%= link_to "Tutores", tutores_index_path if acceso_permitido("tutores.index") %></li>
