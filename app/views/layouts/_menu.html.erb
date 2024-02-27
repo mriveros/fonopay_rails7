@@ -33,9 +33,21 @@
 				        <li><%= link_to "Controladores", controladores_index_path if acceso_permitido("controladores.index") %></li>
 				        <li><%= link_to "Roles", roles_index_path if acceso_permitido("roles.index") %></li>
 				        <li><%= link_to "Personas", personas_index_path if acceso_permitido("personas.index") %></li>
-				        <li><%= link_to "Usuarios", usuarios_index_path if acceso_permitido("usuarios.index") %></li>
-				        <li><%#= link_to "Tipos Caracteristicas", tipos_caracteristicas_index_path if acceso_permitido("tipos_caracteristicas.index") %></li>
-				        <li><%#= link_to "Informaciones", informaciones_index_path if acceso_permitido("informaciones.index") %></li>
+				        <li><%= link_to "Gestión de usuarios", usuarios_index_path if acceso_permitido("usuarios.index") %></li>
+				    </ul>
+				</li>
+
+				<li>
+				    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestión CNET<b class="caret"></b></a>
+				    <ul class="dropdown-menu">
+				        <!-- Opciones de Configuraciones -->
+				        <li><%= link_to "Identificación de usuario CNET", controladores_index_path if acceso_permitido("controladores.index") %></li>
+				        <li><%= link_to "Gestión de usuarios", usuarios_index_path if acceso_permitido("usuarios.index") %></li>
+				        <li><%= link_to "Gestión de Roles", roles_index_path if acceso_permitido("roles.index") %></li>
+				        <li><%= link_to "Gestión Solicitud de Perfiles", usuarios_index_path if acceso_permitido("usuarios.index") %></li>
+				        <li><%= link_to "Gestión Solicitud de Certificación", usuarios_index_path if acceso_permitido("usuarios.index") %></li>
+				        <li><%= link_to "Reportes de perfiles", usuarios_index_path if acceso_permitido("usuarios.index") %></li>
+				        <li><%= link_to "Reportes de ofertas", usuarios_index_path if acceso_permitido("usuarios.index") %></li>
 				    </ul>
 				</li>
 
@@ -54,48 +66,287 @@
 				                <li><%= link_to "Pagos Salarios", pagos_salarios_index_path if acceso_permitido("pagos_salarios.index") %></li>
 				            </ul>
 				        </li>
-				        <!-- FonoPago -->
-				        <li>
-				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">FonoPago<b class="caret"></b></a>
-				            <ul class="dropdown-menu">
-				                <!-- Opciones de FonoPago -->
-				                <li><%= link_to "Personas", personas_index_path if acceso_permitido("personas.index") %></li>
-				                <li><%= link_to "Puestos de Trabajo/Cargos", cargos_index_path if acceso_permitido("cargos.index") %></li>
-				                <li><%= link_to "Precios", precios_index_path if acceso_permitido("precios.index") %></li>
-				                <li><%= link_to "Tutores", tutores_index_path if acceso_permitido("tutores.index") %></li>
-				            </ul>
-				        </li>
-				        <!-- Otras opciones -->
-				        <li><%= link_to "Registrar Cobros", registros_cobros_index_path if acceso_permitido("registros_cobros.index") %></li>
 				    </ul>
 				</li>
     			<li><%= link_to "Reportes", informes_index_path if acceso_permitido("informes.index")%></li>
 	  		
 	  		<% end %>
 
+	  		<% unless current_usuario.present?%>
+
 	  		<li>
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Nosotros <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 				       
 					<li>
-				    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">SNCP<b class="caret"></b></a>
+				    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">Consejo Nacional de Educación y Trabajo<b class="caret"></b></a>
 				        <ul class="dropdown-menu">
-				                <li><%= link_to "Que es?", registros_gastos_index_path %></li>
-				                <li><%= link_to "Acerca de Nosotros", pagos_adelantos_index_path %></li>
+				                <li><%= link_to "¿Qué es?", index_url %></li>
+				                <li><%= link_to "Composición", index_url %></li>
+				                <li><%= link_to "Atribuciones - Funciones", index_url %></li>
+				                <li><%= link_to "Misión, Visión y Valores", index_url %></li>
 				            </ul>
 				        </li>
 				      
 				        <li>
-				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">SNCP2<b class="caret"></b></a>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Unidad Técnica Interministerial<b class="caret"></b></a>
 				            <ul class="dropdown-menu">
-				                <!-- Opciones de FonoPago -->
-				                <li><%= link_to "Que es?", pacientes_index_path  %></li>
-				                <li><%= link_to "Acerca de Nosotros", personas_index_path %></li>
+				                <li><%= link_to "¿Qué es?", index_url %></li>
+				                <li><%= link_to "Estructura orgánica", index_url %></li>
+				                <li><%= link_to "Funciones", index_url %></li>
+				                <li><%= link_to "Manual de procesos y procedimientos", index_url %></li>
+				                <li><%= link_to "Datos de Contacto", index_url %></li>
 				            </ul>
 				        </li>
 
 				    </ul>
 			</li>
+
+			<li>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sistema Nacional de Cualificaciones Profesionales <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				       
+					<li>
+				    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">Hoja de Ruta 2020 - 2030 para el fortalecimiento del SNCP<b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				                <li><%= link_to "Dimensiones y acciones por dimensión.", index_url %></li>
+				                <li><%= link_to "Diagnóstico para armar la Hoja de Ruta", index_url %></li>
+				                <li><%= link_to "Hallazgos y nudos críticos", index_url %></li>
+				            </ul>
+				        </li>
+				      
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Marco Nacional de Cualificaciones Profesionales<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%= link_to "8 Niveles del Marco Nacional de Cualificaciones y su correspondencia con los cinco niveles de cualificaciones del catálogo", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Catalogo Nacional de Perfiles Profesionales (CNPP)<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%= link_to "Estructura de familias profesionales", index_url %></li>
+				                <li><%= link_to "Descripciones sectoriales", index_url %></li>
+				                <li><%= link_to "Descriptores de Niveles de Cualificación", index_url %></li>
+				                <li><%= link_to "Flujograma de Procesos Identificación, Desarrollo, Validación y Aprobación de Perfiles Profesionales, así como de los Módulos Formativos asociados", index_url %></li>
+				                <li><%= link_to "Campos de observación de las familias y Análisis Funcionales", index_url %></li>
+				                <li><%= link_to "Perfiles Profesionales y Módulos Formativos según familias profesiones aprobados por resolución", index_url %></li>
+				                <li><%= link_to "Mesas Sectoriales - Conceptualización y mecanismo /procedimiento de aprobación de documentos presentados a la misma para validación", index_url %></li>
+				                <li><%= link_to "Guías Metodológicas.", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Subsistemas<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%= link_to "Sistema de Información del SNCP", index_url %></li>
+				                <li><%= link_to "Formación Basada en el Catálogo Nacional de Perfiles Profesionales (CNPP)", index_url %></li>
+				                <li><%= link_to "Orientación profesional y vocacional", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Certificación de competencias<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%= link_to "Modelo de Certificación de Competencias vinculado al SNCP", index_url %></li>
+				                <li><%= link_to "Metodología Instrumentos Evaluación", index_url %></li>
+				                <li><%= link_to "Instrumentos de evaluación (piloto)", index_url %></li>
+				                <li><%= link_to "Manual de procedimientos para las etapas y fases de certificación del piloto", index_url %></li>
+				                <li><%= link_to "Plan de Formación para asesores y evaluadores", index_url %></li>
+				                <li><%= link_to "Solicitud de Perfiles Profesionales", index_url %></li>
+				                <li><%= link_to "Solicitud de Certificación de saberes", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Aseguramiento de la Calidad<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%= link_to "Evaluación y Aseguramiento de la Calidad de la EFTP -SNCP", index_url %></li>
+				            </ul>
+				        </li>
+
+				    </ul>
+			</li>
+
+
+			<li>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Educación y Formación Técnica Profesional<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				       
+					<li><%= link_to "Presentación de la política", index_url %></li>
+					<li><%= link_to "Presentación del Plan Estratégico de EFTP", index_url %></li>
+					<li><%= link_to "Agenda planificada 2024 -2028", index_url %></li>
+
+				    <li>
+				        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Ofertas EFTP<b class="caret"></b></a>
+			            <ul class="dropdown-menu">
+		            	    <!-- Opciones -->
+			                <li><%= link_to "Ofertas Disponibles", index_url %></li>
+			                <li><%= link_to "Estados de Oferta", index_url %></li>
+				            <li><%= link_to "Pasantía", index_url %></li>
+				        </ul>
+				    </li>
+
+				    <li>
+				    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">Mapa Escolar de ofertas EFTP por Departamento<b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				        	<!-- Opciones -->
+				            <li><%= link_to "Institucione con ofertas Disponibles", index_url %></li>
+							<li><%= link_to "Ubicación del Establecimiento", index_url %></li>
+							<li><%= link_to "Datos de Contactos de la Institución", index_url %></li>
+				        </ul>
+				    </li>
+
+				    <li><%= link_to "Diagnóstico de Necesidades de Formación en EFTP, Capital y Departamentos (info de 2021)", index_url %></li>
+
+				</ul>
+			</li>
+
+
+			<li>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Marco Normativo<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				       
+					<li>
+				    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">Leyes<b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				                <li><%= link_to "Leyes de pasantía - formulario para solicitud", index_url %></li>
+				            </ul>
+				        </li>
+				      
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Decretos<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "¿Qué es?", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Resoluciones<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "¿Qué es?", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Convenios<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "Ofertas Disponibles", index_url %></li>
+				            </ul>
+				        </li>
+
+				    </ul>
+			</li>
+
+			<li>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Proyectos de Interés<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				       
+					<li>
+				    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">Consejos Educativos Empresariales<b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				                <li><%#= link_to "Leyes de pasantía - formulario para solicitud", index_url %></li>
+				            </ul>
+				        </li>
+				      
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Redes de Liderazgos público, privada vinculada al SNCP<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "¿Qué es?", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Resoluciones<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "¿Qué es?", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Convenios<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "Ofertas Disponibles", index_url %></li>
+				            </ul>
+				        </li>
+
+				    </ul>
+			</li>
+
+			<li>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Formación de Educadores y Técnicos<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				       
+					<li>
+				    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">Capacitaciones disponibles para Docentes e Instructores del MEC<b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				                <li><%= link_to "Cursos disponibles en Mbo'ehara 360", index_url %></li>
+				            </ul>
+				        </li>
+				      
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Capacitaciones disponibles para Instructores<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%= link_to "Cursos disponibles en el SNPP", index_url %></li>
+				                <li><%= link_to "Cursos disponibles en el SINAFOCAL", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Materiales audiovisuales<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "¿Qué es?", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Curso "Avances en la Política de Educación y Formación Técnica y Profesional (EFTP)<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "¿Qué es?", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Curso de Capacitación sobre Formación Basada en Competencias (FBC)<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "Ofertas Disponibles", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Curso de Capacitación y Actualización en Gestión SNCP<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "Ofertas Disponibles", index_url %></li>
+				            </ul>
+				        </li>
+
+				        <li>
+				            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Curso Formación en Gestión de Actores Educativos hacia la mejora de la Educación Técnica en  la Educación Indígena Intercultural<b class="caret"></b></a>
+				            <ul class="dropdown-menu">
+				                <!-- Opciones -->
+				                <li><%#= link_to "Ofertas Disponibles", index_url %></li>
+				            </ul>
+				        </li>
+
+				    </ul>
+			</li>
+			<% end %>
 
 		<li><%#= link_to "Contactos", contactos_url, :id => "tab-contacto", :class => ('active current' if current_page?(contactos_path)), :title => "Ir al Formulario de Contactos" %></li>
 			
