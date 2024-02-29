@@ -1,5 +1,0 @@
-<%= link_to icon_send, "#", id: "link-to-notificar-cuota-detalle-pendiente-#{cita_id}", class: 'btn btn-danger btn-xs', 
-title: 'Haga click aquí para notificar al tutor la cuota Pendiente de Pago.', onclick: "$('.modal').html('');return false;" %>
-
-<%= modal_window( window_id: "modal-window-notificar-cuota-detalle-pendiente#{cita_id}", 
-link_to_id: "#link-to-notificar-cuota-detalle-pendiente-#{cita_id}", url: registros_cobros_notificar_pago_pendiente_path( window_id: "modal-window-notificar-cuota-detalle-pendiente#{cita_id}", cita_id: cita_id) )%> 

@@ -16,27 +16,7 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   app.generate(:initial_avatar, URI.unescape(params[:text]), { size: params[:size], background_color: params[:background] })
 }, as: :avatar
 
-#-------------------------------------FonoPago----------------------------------------------------  
-
-  #GENERACION DE COBROS
-  get 'registros_cobros/index'
-  post 'registros_cobros/lista'
-  get 'registros_cobros/lista'
-  get 'registros_cobros/agregar'
-  post 'registros_cobros/guardar'
-  get 'registros_cobros/eliminar'
-  get 'registros_cobros/cuota_detalle'
-  post 'registros_cobros/lista_cuota_detalle'
-  get 'registros_cobros/lista_cuota_detalle'
-  get 'registros_cobros/pagar_cuota_detalle'
-  post 'registros_cobros/guardar_pago_cuota_detalle'
-  get 'registros_cobros/index_detalles'
-  post 'registros_cobros/lista_registros_cobros_detalles'
-  get 'registros_cobros/lista_registros_cobros_detalles'
-  get "registros_cobros/cambiar_estado_cobro_a_cobrado"
-  get "registros_cobros/cambiar_estado_cobro_a_no_cobrado"
-  get 'registros_cobros/notificar_pago_pendiente'
-
+#-------------------------------------SNCP----------------------------------------------------  
 
 #PERSONALES
   post 'personales/lista'
@@ -62,82 +42,7 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   get "matriculaciones/agregar_matriculacion_detalle"
   post "matriculaciones/guardar_matriculacion_detalle"
   get "matriculaciones/eliminar_matriculacion_detalle"
- 
 
-#TUTORES
-  post "tutores/lista"
-  get "tutores/lista"
-  get "tutores/agregar"
-  post "tutores/guardar"
-  get "tutores/eliminar"
-  get "tutores/editar"
-  post "tutores/actualizar"
-  get "tutores/index"
-  get "tutores/buscar_tutor"
-  get "tutores/buscar_persona" 
-  get "tutores/tutor_detalle"
-  get "tutores/agregar_tutor_detalle"
-  post "tutores/guardar_tutor_detalle"
-  get "tutores/eliminar_tutor_detalle"
-  
-  #CARGOS
-  post 'cargos/lista'
-  get 'cargos/lista'
-  get 'cargos/agregar'
-  post 'cargos/guardar'
-  get 'cargos/eliminar'
-  get 'cargos/editar'
-  post 'cargos/actualizar'
-  get 'cargos/index'
-
-  #REMUNERACIONES EXTRAS
-  post 'pagos_remuneraciones_extras/lista'
-  get 'pagos_remuneraciones_extras/lista'
-  get 'pagos_remuneraciones_extras/agregar'
-  post 'pagos_remuneraciones_extras/guardar'
-  get 'pagos_remuneraciones_extras/eliminar'
-  get 'pagos_remuneraciones_extras/editar'
-  post 'pagos_remuneraciones_extras/actualizar'
-  get 'pagos_remuneraciones_extras/index'
-
-#DESCUENTOS
-  post 'pagos_descuentos/lista'
-  get 'pagos_descuentos/lista'
-  get 'pagos_descuentos/agregar'
-  post 'pagos_descuentos/guardar'
-  get 'pagos_descuentos/eliminar'
-  get 'pagos_descuentos/editar'
-  post 'pagos_descuentos/actualizar'
-  get 'pagos_descuentos/index'
-
-#ADELANTOS
-  post 'pagos_adelantos/lista'
-  get 'pagos_adelantos/lista'
-  get 'pagos_adelantos/agregar'
-  post 'pagos_adelantos/guardar'
-  get 'pagos_adelantos/eliminar'
-  get 'pagos_adelantos/editar'
-  post 'pagos_adelantos/actualizar'
-  get 'pagos_adelantos/index'
-
-#PAGOS DE SALARIOS
-  get 'pagos_salarios/index'
-  post 'pagos_salarios/lista'
-  get 'pagos_salarios/lista'
-  get 'pagos_salarios/agregar'
-  post 'pagos_salarios/guardar'
-  get 'pagos_salarios/eliminar'
-  get 'pagos_salarios/salario_detalle'
-
-  #ADELANTOS
-  post 'registros_gastos/lista'
-  get 'registros_gastos/lista'
-  get 'registros_gastos/agregar'
-  post 'registros_gastos/guardar'
-  get 'registros_gastos/eliminar'
-  get 'registros_gastos/editar'
-  post 'registros_gastos/actualizar'
-  get 'registros_gastos/index'
 #---------------------------------------OTROS MODULOS------------------------------------------------------------------------    
 
   #JURISDICCIONES
@@ -168,62 +73,6 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   get "detalles_creditos/editar"
   post "detalles_creditos/actualizar"
   get "detalles_creditos/index"
-  
-  #PACIENTES
-  post "pacientes/lista"
-  get "pacientes/lista"
-  get "pacientes/agregar"
-  post "pacientes/guardar"
-  get "pacientes/eliminar"
-  get "pacientes/editar"
-  post "pacientes/actualizar"
-  get "pacientes/index"
-  get "pacientes/buscar_paciente"
-  get "pacientes/buscar_persona"
-  get "pacientes/buscar_paciente_cita"
-
-  #PACIENTES DETALLES FONO
-  get "pacientes_detalles_fono/paciente_detalle_fono"
-  post "pacientes_detalles_fono/guardar_detalle_fono"
-
-  #HISTORIALES PACIENTES
-  post "historiales_pacientes/lista_pacientes"
-  get "historiales_pacientes/lista_pacientes"
-  get "historiales_pacientes/index"
-  get "historiales_pacientes/historial_paciente_detalle_fono"
-  get "historiales_pacientes/lista_citas"
-  post "historiales_pacientes/lista_citas"
-  get "historiales_pacientes/historial_cita_detalle_fono_terminado"
-  
-
-
-  #PROFESIONALES
-  post "profesionales/lista"
-  get "profesionales/lista"
-  get "profesionales/agregar"
-  post "profesionales/guardar"
-  get "profesionales/eliminar"
-  get "profesionales/editar"
-  post "profesionales/actualizar"
-  get "profesionales/index"
-  get "profesionales/buscar_profesional"
-  get "profesionales/buscar_persona"
-  
-  
-
-  #PRECIOS
-  post "precios/lista"
-  get "precios/lista"
-  get "precios/agregar"
-  post "precios/guardar"
-  get "precios/eliminar"
-  get "precios/editar"
-  post "precios/actualizar"
-  get "precios/index"
-  get "precios/obtener_datos"
-  get "precios/buscar_precio"
-  get "precios/marcar_predeterminado"
-
   
 #--------------------------------------------SNCP CORE------------------------------------------------------------  
   #PERSONAS
@@ -318,11 +167,8 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   get "about" => "principal#about", :as => :about
   get "legal" => "principal#legal", :as => :legal
   get "index" => "principal#index", :as => :indexv
-	
-	
 
   root 'principal#index'
-  
   get "application/autocompletar" => 'application#autocompletar', :as => :autocompletar
 
 end

@@ -1,8 +1,9 @@
 class UsuariosController < ApplicationController
 
-	#before_action :require_usuario, :except => [:buscar_persona]
+	before_action :require_usuario, :except => [:buscar_persona]
 
   def index
+
   end
 
   def lista
@@ -115,13 +116,6 @@ class UsuariosController < ApplicationController
       persona = persona.first
 
       edad = (DateTime.now - persona.fecha_nacimiento) / 365.25
-
-      # if edad.to_i < 18
-
-      #   valido = false
-      #   @msg += "Para acceder a una cuenta deber ser mayor edad.<br />"
-
-      # end
 
       if valido
 
@@ -304,9 +298,9 @@ class UsuariosController < ApplicationController
 
     end
 
-    if valido
-
-      @usuario.update_attributes(params[:usuario])
+    if valido 
+      
+      @usuario.update(usuario_params)
 
       if @usuario.save
 
@@ -326,6 +320,12 @@ class UsuariosController < ApplicationController
 
     end
 
+  end
+
+  def usuario_params
+  
+    params.require(:usuario).permit(:persona_id, :email, :active)
+  
   end
 
   def reset_password
