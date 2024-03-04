@@ -6019,12 +6019,29 @@ header nav.navbar-principal .dropdown-menu a, header nav.navbar-principal .dropd
     background: #f4f4f4;
 }
 
+
 .footer-principal {
+  
     margin-top: 50px;
     padding: 20px;
     color: #777;
     border-top: 1px solid #e5e5e5;
     background: #00529c;
+}
+
+.linea-azul {
+    background-color: #00529c; /* Color azul */
+    top: 0;
+}
+
+.linea-gris {
+    height: fit-content;
+    max-width: 1900px; /* Ancho máximo del contenedor */
+    padding: 20px; /* Añade relleno al contenedor */
+    margin: 0 20px; /* Márgenes izquierdo y derecho de 20 píxeles */
+    padding: 20px; /* Añade relleno al contenedor */
+    background-color: #e6e3e3; /* Color gris */
+    bottom: 0;
 }
 .footer-container {
     max-width: 1900px; /* Ancho máximo del contenedor */
@@ -6355,3 +6372,4 @@ header nav.navbar-principal .dropdown-menu a, header nav.navbar-principal .dropd
 }
 
 .black-color[disabled] { background-color: #fff !important;}
+
